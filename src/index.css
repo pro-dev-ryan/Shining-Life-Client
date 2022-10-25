@@ -15,15 +15,11 @@
 /* All Card Components styles */
 @layer components {
   .glass {
-    @apply backdrop-blur-md border-y-2 -z-50 border-white border-opacity-20 shadow shadow-current;
+    @apply backdrop-blur-md -z-50 border-white border-opacity-20 shadow shadow-current;
   }
 
   .blogQue {
-    @apply font-heading lg:text-lg  lg:font-semibold pb-2 text-rose-300 capitalize text-center;
-  }
-
-  .blogAns {
-    @apply bg-zinc-700 bg-opacity-30 p-2 lg:text-lg  rounded-md text-orange-300 font-button;
+    @apply font-heading lg:text-lg  lg:font-semibold pb-2 text-sky-500 capitalize;
   }
 
   .glassComponent {
@@ -35,14 +31,14 @@
   }
 
   .card-template {
-    @apply lg:hover:shadow-xl focus:lg:ring-2 shadow-md shadow-zinc-500 lg:w-[80%] lg:p-4 p-2 lg:m-3 m-2 flex flex-col items-center;
+    @apply lg:hover:shadow-xl focus:lg:ring-2 shadow-md shadow-zinc-500 lg:w-[100%]  lg:m-2 m-2 flex flex-col;
   }
   .card img {
-    @apply lg:h-52;
+    @apply lg:w-full;
   }
 
   .info {
-    @apply font-heading mb-2;
+    @apply font-heading mb-2 lg:p-3 p-2;
   }
   .cardBtn {
     @apply bg-zinc-500 text-white font-button bg-opacity-50 rounded-md lg:px-10 px-4 py-2 font-semibold shadow-md hover:bg-opacity-40 hover:shadow-slate-400 transition duration-200;
