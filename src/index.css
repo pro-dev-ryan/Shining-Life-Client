@@ -3,3 +3,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navLinks a {
+  @apply mx-5 font-semibold font-text text-slate-600 text-lg transition-colors duration-200 hover:text-sky-500;
+}
+
+.cta a {
+  @apply mx-3 px-6 py-2 bg-sky-500 text-lg font-semibold font-button tracking-widest text-white hover:text-black hover:bg-white transition-colors duration-300 hover:border border-y-black;
+}
+
+/* All Card Components styles */
+@layer components {
+  .glass {
+    @apply backdrop-blur-md border-y-2 -z-50 border-white border-opacity-20 shadow shadow-current;
+  }
+
+  .blogQue {
+    @apply font-heading lg:text-lg  lg:font-semibold pb-2 text-rose-300 capitalize text-center;
+  }
+
+  .blogAns {
+    @apply bg-zinc-700 bg-opacity-30 p-2 lg:text-lg  rounded-md text-orange-300 font-button;
+  }
+
+  .glassComponent {
+    @apply glass blogAns  bg-gradient-to-tl -z-50 from-gray-800 to-transparent bg-opacity-20;
+  }
+
+  .cards {
+    @apply flex justify-center items-center;
+  }
+
+  .card-template {
+    @apply lg:hover:shadow-xl focus:lg:ring-2 shadow-md shadow-zinc-500 lg:w-[80%] lg:p-4 p-2 lg:m-3 m-2 flex flex-col items-center;
+  }
+  .card img {
+    @apply lg:h-52;
+  }
+
+  .info {
+    @apply font-heading mb-2;
+  }
+  .cardBtn {
+    @apply bg-zinc-500 text-white font-button bg-opacity-50 rounded-md lg:px-10 px-4 py-2 font-semibold shadow-md hover:bg-opacity-40 hover:shadow-slate-400 transition duration-200;
+  }
+}
