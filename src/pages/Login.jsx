@@ -3,7 +3,12 @@ import React from "react";
 const Login = () => {
   return (
     <div>
-      <h3 className="text-3xl text-center">This is Login section</h3>
+      <h1 className="text-4xl text-center font-bold font-heading lg:mt-10">
+        Login
+      </h1>
+      <form action="">
+        <label htmlFor="">Email</label>
+      </form>
     </div>
   );
 };

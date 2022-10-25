@@ -44,3 +44,8 @@
     @apply bg-zinc-500 text-white font-button bg-opacity-50 rounded-md lg:px-10 px-4 py-2 font-semibold shadow-md hover:bg-opacity-40 hover:shadow-slate-400 transition duration-200;
   }
 }
+
+/* SideBar design: */
+.courses a {
+  @apply text-lg my-2 font-button hover:text-sky-500 text-stone-700 tracking-wide font-semibold;
+}
