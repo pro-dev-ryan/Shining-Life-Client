@@ -7,9 +7,11 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      <div className="layout px-1 my-1 ">
+      <div className="layout p-1 ">
         <Sidebar />
-        <Outlet />
+        <div className="outlet lg:min-h-[80vh]">
+          <Outlet />
+        </div>
       </div>
       <Footer />
     </div>

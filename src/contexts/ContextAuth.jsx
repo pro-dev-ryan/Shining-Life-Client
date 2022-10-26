@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { app } from "./firebase.init";
 import { useEffect } from "react";
@@ -36,7 +37,12 @@ const ContextAuth = ({ children }) => {
     return unsubscribe();
   }, []);
 
-  console.log(user);
+  const updateUserProfile = (name, url) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: url,
+    });
+  };
 
   const userSignOut = () => {
     return signOut(auth);
@@ -48,6 +54,7 @@ const ContextAuth = ({ children }) => {
     user,
     setUser,
     userSignOut,
+    updateUserProfile,
   };
   return (
     <AuthContext.Provider value={authContent}>{children}</AuthContext.Provider>

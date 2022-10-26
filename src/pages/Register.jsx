@@ -12,7 +12,8 @@ const Register = () => {
   const [pass, setPass] = useState(false);
   const [show, setShow] = useState(false);
   const [enableSubmit, setEnableSubmit] = useState(true);
-  const { handleEmailPass, signWithGoogle } = useContext(AuthContext);
+  const { handleEmailPass, signWithGoogle, user, updateUserProfile } =
+    useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -38,9 +39,8 @@ const Register = () => {
       return;
     }
     setPass(false);
-    handleEmailPass(email, password).then((result) => {
-      console.log(result);
-    });
+    handleEmailPass(email, password).then((result) => {});
+    updateUserProfile((name = "user"), (photo = "")).then(() => {});
   };
   const signIn = () => {
     console.log("working");
@@ -49,8 +49,8 @@ const Register = () => {
       .catch((error) => console.error(error));
   };
   return (
-    <div className="flex justify-center items-center pt-8">
-      <div className="flex flex-col max-w-md p-3 border border-sky-100 sm:p-10 bg-sky-50 text-stone-700">
+    <div className="flex register justify-end items-center pr-8 lg:py-8 dark:bg-stone-700">
+      <div className="flex flex-col max-w-md p-3 border dark:border-stone-600 border-sky-100 sm:p-10 bg-sky-50 dark:bg-stone-800  text-stone-700 dark:text-stone-300 shadow shadow-stone-500">
         <div className="mb-8 text-center">
           <h1
             className="my-3 text-5xl font-bold font-heading
@@ -58,7 +58,7 @@ const Register = () => {
           >
             Register
           </h1>
-          <p className="text-base font-text text-stone-600">
+          <p className="text-base font-text dark:text-stone-300 text-stone-600">
             Create a new account
           </p>
         </div>
@@ -167,7 +167,7 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={enableSubmit}
-                className="w-full px-8 py-3 text-lg tracking-widest transition-colors duration-200 font-bold rounded-md bg-white hover:bg-sky-700 hover:text-white text-black ring-1 ring-sky-400 hover:ring-0 font-button disabled:bg-stone-500 disabled:hover:text-black"
+                className="w-full px-8 py-3 text-lg tracking-widest transition-colors duration-200 font-bold rounded-md bg-white dark:bg-stone-700 dark:text-white hover:bg-sky-700 hover:text-white text-black ring-1 ring-sky-400 hover:ring-0 font-button disabled:bg-stone-500 disabled:hover:text-black"
               >
                 Sign Up
               </button>
@@ -198,7 +198,7 @@ const Register = () => {
           Have an account already?{" "}
           <Link
             to="/login"
-            className="hover:underline font-button font-bold text-base text-gray-600"
+            className="hover:underline font-button font-bold text-base text-stone-600 dark:text-sky-300"
           >
             Login
           </Link>

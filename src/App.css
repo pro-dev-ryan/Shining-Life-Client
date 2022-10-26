@@ -3,6 +3,64 @@
   grid-template-columns: 1fr 3fr;
 }
 
+.hero {
+  background-image: url("https://images.pexels.com/photos/5313361/pexels-photo-5313361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  height: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+.register {
+  background-image: url("https://images.pexels.com/photos/6207369/pexels-photo-6207369.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 10;
+  position: relative;
+}
+
+.login {
+  background-image: url("https://images.pexels.com/photos/21696/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right right;
+  position: relative;
+  z-index: 100;
+}
+
+.login::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: black;
+  z-index: -100;
+  opacity: 50%;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: black;
+  z-index: -100;
+  opacity: 50%;
+}
+.register::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: black;
+  z-index: -100;
+  opacity: 70%;
+}
+
 .passWord {
   position: relative;
 }

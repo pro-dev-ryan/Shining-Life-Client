@@ -11,11 +11,11 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navBar sticky top-0 border-b shadow-md border-slate-300 bg-slate-200 flex items-center justify-between px-5 h-20">
+      <nav className="navBar sticky top-0 border-b shadow-md dark:shadow-none border-slate-300 dark:border-stone-600 bg-slate-200 dark:bg-stone-800 flex items-center justify-between px-5 h-20">
         <Link to="/">
           {" "}
           {/* <img src="/Movie site.png" alt="site-logo" className="w-48" /> */}
-          <h3 className="text-xl text-sky-700 font-bold uppercase font-textHead">
+          <h3 className="text-xl text-sky-700 dark:text-sky-400 font-bold uppercase font-textHead">
             Shining-Life
           </h3>
         </Link>

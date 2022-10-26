@@ -7,11 +7,10 @@ const Home = () => {
       <div className="hero">
         <div className="pt-40 mx-[2%]">
           <h3 className="text-5xl text-white font-bold">
-            Welcome to Popcorn Time
+            Welcome to Shine-Life.
           </h3>
         </div>
       </div>
-      <h3>Here is Content goes</h3>
     </>
   );
 };
