@@ -6,6 +6,7 @@ const Blog = () => {
       <h3 className="text-3xl font-semibold font-textHead">
         This is Blog Section
       </h3>
+      <div></div>
     </div>
   );
 };

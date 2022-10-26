@@ -1,8 +1,14 @@
 import React from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../contexts/ContextAuth";
 import "../styles/Header.module.css";
 
 const Header = () => {
+  const { userSignOut, user } = useContext(AuthContext);
+  const handleSignOut = () => {
+    userSignOut().then(() => {});
+  };
   return (
     <>
       <nav className="navBar sticky top-0 border-b shadow-md border-slate-300 bg-slate-200 flex items-center justify-between px-5 h-20">
@@ -20,8 +26,17 @@ const Header = () => {
           <NavLink to="/blog"> Blog</NavLink>
         </div>
         <div className="cta">
-          <NavLink to="/login">Sign-Up</NavLink>
-          <NavLink to="/register">Register</NavLink>
+          {user.uid ? (
+            <>
+              <button onClick={handleSignOut}>SignOut</button>
+              <p>{user.displayName}</p>
+            </>
+          ) : (
+            <>
+              <NavLink to="/login">Sign-In</NavLink>
+              <NavLink to="/register">Register</NavLink>
+            </>
+          )}
         </div>
       </nav>
     </>

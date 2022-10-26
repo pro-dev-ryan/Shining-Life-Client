@@ -1,13 +1,53 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa";
+import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/ContextAuth";
 
-// import { AuthContext } from "../context/ContextAuth";
 const Register = () => {
-  // const { signUp, updateName, verifyMail, setLoader } = useContext(AuthContext);
-  // const navigate = useNavigate();
-
+  const [fname, setFname] = useState(false);
+  const [mail, setMail] = useState(false);
+  const [pass, setPass] = useState(false);
+  const [show, setShow] = useState(false);
+  const [enableSubmit, setEnableSubmit] = useState(true);
+  const { handleEmailPass, signWithGoogle } = useContext(AuthContext);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    if (!name) {
+      setFname(true);
+      return;
+    }
+    setFname(false);
+    if (email === "") {
+      setMail(true);
+      return;
+    }
+    setMail(false);
+    if (
+      password === "" ||
+      !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password)
+    ) {
+      setPass(true);
+      return;
+    }
+    setPass(false);
+    handleEmailPass(email, password).then((result) => {
+      console.log(result);
+    });
+  };
+  const signIn = () => {
+    console.log("working");
+    signWithGoogle()
+      .then((res) => console.log(res))
+      .catch((error) => console.error(error));
+  };
   return (
     <div className="flex justify-center items-center pt-8">
       <div className="flex flex-col max-w-md p-3 border border-sky-100 sm:p-10 bg-sky-50 text-stone-700">
@@ -22,19 +62,30 @@ const Register = () => {
             Create a new account
           </p>
         </div>
-        <form onSubmit="" noValidate="" action="" className="space-y-12">
+        <form
+          onSubmit={handleSubmit}
+          noValidate=""
+          action=""
+          className="space-y-12"
+        >
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="block mb-2 font-text text-md">
                 Full Name
               </label>
+              {fname && (
+                <p style={{ color: "red", fontFamily: "Nunito" }}>
+                  Namefield can not be empty
+                </p>
+              )}
               <input
                 type="text"
-                name="name"
                 id="name"
+                name="name"
                 placeholder="Enter Your Name Here"
                 className="w-full px-3 py-2 border-b-2 bg-sky-50 border-b-stone-200 hover:border-b-zinc-500 transition-colors duration-150 focus:border-sky-900 outline-none text-stone-900"
                 data-temp-mail-org="0"
+                required
               />
             </div>
             <div>
@@ -43,7 +94,6 @@ const Register = () => {
               </label>
               <input
                 type="url"
-                name="photo"
                 id="photo"
                 placeholder="Paste Your Url Here"
                 className="w-full px-3 py-2 border-b-2 bg-sky-50 border-b-stone-200 hover:border-b-zinc-500 transition-colors duration-150 focus:border-sky-900 outline-none text-stone-900"
@@ -54,13 +104,19 @@ const Register = () => {
               <label htmlFor="email" className="block mb-2 font-text text-md">
                 Email address
               </label>
+              {mail && (
+                <p style={{ color: "red", fontFamily: "Nunito" }}>
+                  Place a valid Mail
+                </p>
+              )}
+
               <input
                 type="email"
-                name="email"
                 id="email"
                 placeholder="Enter Your Email Here"
                 className="w-full px-3 py-2 border-b-2 bg-sky-50 border-b-stone-200 hover:border-b-zinc-500 transition-colors duration-150 focus:border-sky-900 text-stone-900 outline-none"
                 data-temp-mail-org="0"
+                required
               />
             </div>
             <div>
@@ -68,17 +124,32 @@ const Register = () => {
                 <label htmlFor="password" className="font-text text-md">
                   Password
                 </label>
+                {pass && (
+                  <p style={{ color: "red", fontFamily: "Nunito" }}>
+                    password needs 1 upper 1 lower and minimum 8 chars long
+                  </p>
+                )}
               </div>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="*******"
-                className="w-full px-3 py-2 border-b-2 bg-sky-50 border-b-stone-200 hover:border-b-zinc-500 transition-colors duration-150 md:focus:border-sky-900 text-stone-900 outline-none"
-              />
+              <div className="passWord">
+                <input
+                  type={show ? "text" : "password"}
+                  id="password"
+                  placeholder="*******"
+                  required
+                  className="w-full px-3 py-2 border-b-2 bg-sky-50 border-b-stone-200 hover:border-b-zinc-500 transition-colors duration-150 md:focus:border-sky-900 text-stone-900 outline-none"
+                />
+                <button onClick={() => setShow(!show)} className="eyeBtn">
+                  {show ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
             </div>
+
             <div>
-              <input type="checkbox" id="policies" />
+              <input
+                onChange={() => setEnableSubmit(!enableSubmit)}
+                type="checkbox"
+                id="policies"
+              />
               <label htmlFor="policies" className="text-base pl-3 font-text">
                 Agree with our{" "}
                 <Link
@@ -90,11 +161,13 @@ const Register = () => {
               </label>
             </div>
           </div>
+          <p></p>
           <div className="space-y-2">
             <div>
               <button
                 type="submit"
-                className="w-full px-8 py-3 text-lg tracking-widest transition-colors duration-200 font-bold rounded-md bg-white hover:bg-sky-700 hover:text-white text-black ring-1 ring-sky-400 hover:ring-0 font-button"
+                disabled={enableSubmit}
+                className="w-full px-8 py-3 text-lg tracking-widest transition-colors duration-200 font-bold rounded-md bg-white hover:bg-sky-700 hover:text-white text-black ring-1 ring-sky-400 hover:ring-0 font-button disabled:bg-stone-500 disabled:hover:text-black"
               >
                 Sign Up
               </button>
@@ -107,7 +180,11 @@ const Register = () => {
           </p>
         </div>
         <div className="flex justify-center space-x-4">
-          <button aria-label="Log in with Google" className="p-3">
+          <button
+            onClick={signIn}
+            aria-label="Log in with Google"
+            className="p-3"
+          >
             <FcGoogle size={30} />
           </button>
           <button

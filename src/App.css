@@ -2,3 +2,13 @@
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
+
+.passWord {
+  position: relative;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 5%;
+  bottom: 40%;
+}
