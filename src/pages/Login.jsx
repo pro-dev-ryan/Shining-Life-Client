@@ -7,7 +7,7 @@ import { AuthContext } from "../contexts/ContextAuth";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, setLoader } = useContext(AuthContext);
   const [mail, setMail] = useState(false);
   const [pass, setPass] = useState(false);
   const [show, setShow] = useState(false);
@@ -40,6 +40,7 @@ const Login = () => {
       .catch((error) => toast.error(error.message, "Invalid User or Password"));
     useNavigate(from, { replace: "true" });
     form.reset();
+    setLoader(false);
   };
   return (
     <div className="login lg:h-[80vh]">

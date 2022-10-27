@@ -41,7 +41,6 @@ const Header = () => {
             <>
               <div className="flex gap-2 items-center">
                 <button onClick={handleSignOut}>SignOut</button>
-                <span className="dark:text-stone-300">{user.displayName}</span>
                 <span>
                   <div title={user?.displayName}>
                     {user.photoURL ? (

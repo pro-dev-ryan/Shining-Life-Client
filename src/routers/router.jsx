@@ -10,10 +10,12 @@ import Blog from "../pages/Blog";
 import CourseDetail from "../pages/CourseDetail";
 import Checkout from "../pages/Checkout";
 import PrivateRoutes from "./PrivateRoutes";
+import Sidebar from "../pages/Sidebar";
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    loader: () => fetch("https://back-end-zeta-three.vercel.app/sidebar"),
     errorElement: <NotFound />,
     children: [
       {
@@ -21,7 +23,12 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/sidebar",
+        element: <Sidebar />,
+      },
+      {
         path: "/courses",
+        loader: () => fetch("https://back-end-zeta-three.vercel.app/courses"),
         element: <Classes />,
       },
       {

@@ -1,13 +1,17 @@
 import React from "react";
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import Loader from "../components/loader/Loader";
 import { AuthContext } from "../contexts/ContextAuth";
 
 const PrivateRoutes = ({ children }) => {
-  const { user } = useContext(AuthContext);
+  const { user, loader } = useContext(AuthContext);
   const location = useLocation();
+  if (loader) {
+    console.log(loader);
+    return <Loader />;
+  }
   if (user && user.emailVerified) {
-    console.log(user.uid);
     return children;
   } else {
     return <Navigate to="/login" state={{ from: location }} replace />;

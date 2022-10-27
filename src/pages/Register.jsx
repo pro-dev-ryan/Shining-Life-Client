@@ -13,8 +13,13 @@ const Register = () => {
   const [pass, setPass] = useState(false);
   const [show, setShow] = useState(false);
   const [enableSubmit, setEnableSubmit] = useState(true);
-  const { handleEmailPass, signWithGoogle, verifyMail, updateUserProfile } =
-    useContext(AuthContext);
+  const {
+    handleEmailPass,
+    signWithGoogle,
+    verifyMail,
+    updateUserProfile,
+    setLoader,
+  } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -49,6 +54,7 @@ const Register = () => {
     });
     console.log(name, photo);
     form.reset();
+    setLoader(false);
   };
   const signIn = () => {
     signWithGoogle()
