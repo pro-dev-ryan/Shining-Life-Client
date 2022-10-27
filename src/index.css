@@ -12,11 +12,12 @@
   @apply mx-5 font-semibold font-text text-stone-600 dark:text-stone-300 text-lg transition-colors duration-200 hover:text-sky-500;
 }
 
-.cta a,
-.cta button {
-  @apply mx-3 px-6 py-2 bg-sky-500 dark:hover:bg-sky-500 dark:bg-sky-600 dark:hover:text-stone-100  text-lg font-semibold font-button tracking-widest text-white hover:text-black hover:bg-white transition-colors duration-300 hover:border dark:hover:border-none border-y-black;
+@layer components {
+  .cta a,
+  .cta button {
+    @apply mx-3 px-6 py-2 bg-sky-500 dark:hover:bg-sky-500 dark:bg-sky-600 dark:hover:text-stone-100  text-lg font-semibold font-button tracking-widest text-white hover:text-black hover:bg-white transition-colors duration-300 hover:border dark:hover:border-none border-y-black;
+  }
 }
-
 /* All Card Components styles */
 @layer components {
   .glass {

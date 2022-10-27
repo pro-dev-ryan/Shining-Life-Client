@@ -5,6 +5,8 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -18,7 +20,6 @@ export const AuthContext = createContext({});
 const ContextAuth = ({ children }) => {
   const [user, setUser] = useState({});
   const auth = getAuth(app);
-
   const handleEmailPass = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
@@ -30,11 +31,11 @@ const ContextAuth = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user && user.uid) {
-        setUser(user);
-      }
+      setUser(user);
     });
-    return unsubscribe();
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const updateUserProfile = (name, url) => {
@@ -44,9 +45,18 @@ const ContextAuth = ({ children }) => {
     });
   };
 
+  const verifyMail = () => {
+    return sendEmailVerification(auth.currentUser);
+  };
+
   const userSignOut = () => {
     return signOut(auth);
   };
+
+  const signIn = (email, pass) => {
+    return signInWithEmailAndPassword(auth, email, pass);
+  };
+  console.log(user);
 
   const authContent = {
     handleEmailPass,
@@ -55,6 +65,8 @@ const ContextAuth = ({ children }) => {
     setUser,
     userSignOut,
     updateUserProfile,
+    signIn,
+    verifyMail,
   };
   return (
     <AuthContext.Provider value={authContent}>{children}</AuthContext.Provider>

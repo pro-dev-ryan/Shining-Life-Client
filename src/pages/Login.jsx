@@ -1,12 +1,18 @@
 import React from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/ContextAuth";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
   const [mail, setMail] = useState(false);
   const [pass, setPass] = useState(false);
   const [show, setShow] = useState(false);
+  const location = useLocation();
+  const from = location.state.from.pathname || "/";
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -26,6 +32,13 @@ const Login = () => {
     }
     setPass(false);
     console.log(email, password);
+    signIn(email, password)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
+    useNavigate(from, { replace: true });
+    form.reset();
   };
   return (
     <div className="login lg:h-[80vh]">
@@ -88,7 +101,11 @@ const Login = () => {
                   dark:hover:border-b-zinc-300
                   transition-colors duration-150 focus:border-sky-900 text-stone-900 outline-none"
                   />
-                  <button onClick={() => setShow(!show)} className="eyeBtn">
+                  <button
+                    type="button"
+                    onClick={() => setShow(!show)}
+                    className="eyeBtn"
+                  >
                     {show ? <FaEyeSlash /> : <FaEye />}
                   </button>
                 </div>
@@ -96,12 +113,11 @@ const Login = () => {
             </div>
             <div className="space-y-2">
               <div>
-                <button
+                <input
                   type="submit"
-                  className="w-full px-8 py-3 text-lg tracking-widest transition-colors duration-200 font-bold rounded-md bg-white dark:bg-stone-700 dark:text-white hover:bg-sky-700 hover:text-white text-black ring-1 ring-sky-400 hover:ring-0 font-button disabled:bg-stone-500 disabled:hover:text-black"
-                >
-                  Sign In
-                </button>
+                  value="Sign In"
+                  className="w-full px-8 py-3 text-lg tracking-widest transition-colors duration-200 font-bold rounded-md bg-white dark:bg-stone-700 dark:text-white hover:bg-sky-700 hover:text-white text-black ring-1 ring-sky-400 hover:ring-0 font-button disabled:bg-stone-500 disabled:hover:text-black cursor-pointer"
+                ></input>
               </div>
               <p>
                 Do not have an account?{" "}

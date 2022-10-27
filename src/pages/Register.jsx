@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/ContextAuth";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [fname, setFname] = useState(false);
@@ -12,7 +13,7 @@ const Register = () => {
   const [pass, setPass] = useState(false);
   const [show, setShow] = useState(false);
   const [enableSubmit, setEnableSubmit] = useState(true);
-  const { handleEmailPass, signWithGoogle, user, updateUserProfile } =
+  const { handleEmailPass, signWithGoogle, verifyMail, updateUserProfile } =
     useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,11 +40,17 @@ const Register = () => {
       return;
     }
     setPass(false);
-    handleEmailPass(email, password).then((result) => {});
-    updateUserProfile((name = "user"), (photo = "")).then(() => {});
+    handleEmailPass(email, password).then((result) => {
+      updateUserProfile(name, photo);
+      verifyMail();
+      toast("An Email Verification Sent, Please Verify!!!", {
+        className: "text-rose-400 font-bold",
+      });
+    });
+    console.log(name, photo);
+    form.reset();
   };
   const signIn = () => {
-    console.log("working");
     signWithGoogle()
       .then((res) => console.log(res))
       .catch((error) => console.error(error));
