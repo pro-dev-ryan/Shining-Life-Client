@@ -1,14 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/ContextAuth";
 
 const CourseDetail = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   return (
-    <div>
+    <div className="my-5">
       <h2 className="text-center text-4xl font-heading font-bold">
         This is Course Detail Page
       </h2>
       <div>
-        <img src="" alt="/" />
+        <img
+          className="w-full h-[400px]"
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"
+          alt=""
+        />
         <div>
           <h3 className="text-2xl font-textHead font-semibold">Course Name:</h3>
           <h4 className="text-xl font-textHead font-semibold">Short Desc:</h4>
@@ -24,8 +33,12 @@ const CourseDetail = () => {
           </div>
         </div>
         <Link
+          onClick={
+            user?.emailVerified
+              ? navigate("/checkout/Id")
+              : toast.error("You need to verify Email")
+          }
           className="px-8 py-3 my-8 bg-sky-500 text-white hover:bg-sky-700"
-          to="/checkout"
         >
           Get Premium Access
         </Link>

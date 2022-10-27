@@ -5,7 +5,7 @@ function Card() {
   // const { courseId } = useParams();
   return (
     <div className="cards mt-3 lg:mx-3 lg:w-[100%]">
-      <Link to="/:Id">
+      <Link to="/courses/Id">
         <div>
           <div
             className="card-template glass backdrop-blur-sm bg-sky-100 dark:bg-stone-600 

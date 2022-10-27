@@ -3,7 +3,9 @@ import { useState } from "react";
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../contexts/ContextAuth";
+import { TfiUser } from "react-icons/tfi";
 import { BsMoon, BsSun } from "react-icons/Bs";
+
 import "../styles/Header.module.css";
 
 const Header = () => {
@@ -41,12 +43,16 @@ const Header = () => {
                 <button onClick={handleSignOut}>SignOut</button>
                 <span className="dark:text-stone-300">{user.displayName}</span>
                 <span>
-                  <div>
-                    <img
-                      className="rounded-full h-9"
-                      src={user.photoURL}
-                      alt=""
-                    />
+                  <div title={user?.displayName}>
+                    {user.photoURL ? (
+                      <img
+                        className="rounded-full h-9"
+                        src={user.photoURL}
+                        alt=""
+                      />
+                    ) : (
+                      <TfiUser />
+                    )}
                   </div>
                 </span>
               </div>

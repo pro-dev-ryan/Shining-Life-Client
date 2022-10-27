@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      <div className="layout p-1 ">
+      <div className="layout p-1 my-5 ">
         <Sidebar />
         <div className="outlet lg:min-h-[80vh]">
           <Outlet />

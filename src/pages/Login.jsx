@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/ContextAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const Login = () => {
   const [pass, setPass] = useState(false);
   const [show, setShow] = useState(false);
   const location = useLocation();
-  const from = location.state.from.pathname || "/";
+  const from = location?.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,8 +37,8 @@ const Login = () => {
       .then((res) => {
         console.log(res);
       })
-      .catch((error) => console.log(error));
-    useNavigate(from, { replace: true });
+      .catch((error) => toast.error(error.message, "Invalid User or Password"));
+    useNavigate(from, { replace: "true" });
     form.reset();
   };
   return (

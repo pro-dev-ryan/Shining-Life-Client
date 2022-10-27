@@ -56,7 +56,6 @@ const ContextAuth = ({ children }) => {
   const signIn = (email, pass) => {
     return signInWithEmailAndPassword(auth, email, pass);
   };
-  console.log(user);
 
   const authContent = {
     handleEmailPass,

@@ -43,7 +43,7 @@ const Register = () => {
     handleEmailPass(email, password).then((result) => {
       updateUserProfile(name, photo);
       verifyMail();
-      toast("An Email Verification Sent, Please Verify!!!", {
+      toast.success("An Email Verification Sent, Please Verify!!!", {
         className: "text-rose-400 font-bold",
       });
     });
