@@ -7,35 +7,62 @@ import { AuthContext } from "../contexts/ContextAuth";
 const CourseDetail = () => {
   const detailInfo = useLoaderData();
   console.log(detailInfo);
+  const { courseName, mentor, rating, courseDetails, courseThumb } = detailInfo;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
     <div className="my-5">
       <h2 className="text-center text-4xl font-heading font-bold">
-        Course Detail Page
+        {courseName}
       </h2>
-      <div>
-        <img
-          className="w-full h-[400px]"
-          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"
-          alt=""
-        />
+      <div className="my-5">
+        <img className="w-full h-[400px]" src={courseThumb} alt="/" />
         <div>
-          <h3 className="text-2xl font-textHead font-semibold">Course Name:</h3>
-          <h4 className="text-xl font-textHead font-semibold">Short Desc:</h4>
           <div className="flex px-5 justify-between">
-            <div>Mentor Name:</div>
-            <div>Rating:</div>
+            <div className="font-semibold text-lg font-text">
+              {" "}
+              <span className="font-semibold text-lg font-text">
+                Mentor Name:
+              </span>{" "}
+              {mentor.mentorName}
+            </div>
+            <div className="font-semibold text-lg font-text">
+              Rating: {rating}
+            </div>
           </div>
-          <div>
+          <div className="mb-8">
             <h4 className="text-xl font-textHead font-semibold">
-              Course Details:
+              Course Details Description
             </h4>
-            <p>...............</p>
+            <p className="mb-4">
+              {" "}
+              <span className="font-semibold text-lg font-textHead">
+                Requirements:
+              </span>{" "}
+              {courseDetails.Requirements}
+            </p>
+            <p className="mb-4">
+              {" "}
+              <span className="font-semibold text-lg font-textHead">
+                What You'll learn:
+              </span>{" "}
+              {courseDetails.learningTopics}
+            </p>
+            <p className="mb-4">
+              {" "}
+              <span className="font-semibold text-lg font-textHead">
+                Who this course is for:
+              </span>{" "}
+              {courseDetails.forWhom}
+            </p>
           </div>
         </div>
         <Link
-          onClick={user?.emailVerified ? navigate("/checkout/Id") : ""}
+          onClick={
+            user?.emailVerified
+              ? navigate("/checkout/:id")
+              : toast.error("Verifymail for Premium Access")
+          }
           className="px-8 py-3 my-8 bg-sky-500 text-white hover:bg-sky-700"
         >
           Get Premium Access

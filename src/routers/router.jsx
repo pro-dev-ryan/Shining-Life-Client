@@ -49,12 +49,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/courses/:id",
-        loader: (params) =>
+        loader: ({ params }) =>
           fetch(`https://back-end-zeta-three.vercel.app/courses/${params.id}`),
         element: <CourseDetail />,
       },
       {
         path: "/checkout/:id",
+        loader: ({ params }) => {
+          fetch(`https://back-end-zeta-three.vercel.app/courses/${params.id}`);
+        },
         element: (
           <PrivateRoutes>
             <Checkout />
