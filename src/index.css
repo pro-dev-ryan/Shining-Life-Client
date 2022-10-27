@@ -32,10 +32,6 @@
     @apply glass blogAns  bg-gradient-to-tl -z-50 from-gray-800 to-transparent bg-opacity-20;
   }
 
-  .cards {
-    @apply flex justify-center items-center;
-  }
-
   .card-template {
     @apply lg:hover:shadow-xl focus:lg:ring-2 shadow-md shadow-zinc-500 lg:w-[100%]  lg:m-2 m-2 flex flex-col;
   }

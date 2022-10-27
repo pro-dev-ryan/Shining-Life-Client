@@ -10,7 +10,7 @@ const Sidebar = () => {
       </h4>
       <ul className="flex flex-col items-center courses lg:mt-6">
         {data.map((item) => (
-          <Link to="/courses/Id" key={item?.id}>
+          <Link to={`courses/${item.id}`} key={item?.id}>
             {item?.courseName}
           </Link>
         ))}

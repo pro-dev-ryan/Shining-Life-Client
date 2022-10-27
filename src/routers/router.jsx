@@ -48,7 +48,9 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "courses/:id",
+        path: "/courses/:id",
+        loader: (params) =>
+          fetch(`https://back-end-zeta-three.vercel.app/courses/${params.id}`),
         element: <CourseDetail />,
       },
       {
