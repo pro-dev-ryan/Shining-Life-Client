@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaFacebook, FaGithubAlt } from "react-icons/fa";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/ContextAuth";
@@ -19,6 +19,7 @@ const Register = () => {
     verifyMail,
     updateUserProfile,
     setLoader,
+    signWithGithub,
   } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,6 +61,12 @@ const Register = () => {
     signWithGoogle()
       .then((res) => console.log(res))
       .catch((error) => console.error(error));
+  };
+
+  const githubSign = () => {
+    signWithGithub()
+      .then((res = {}))
+      .catch((error) => {});
   };
   return (
     <div className="flex register justify-end items-center pr-8 lg:py-8 dark:bg-stone-700">
@@ -205,6 +212,13 @@ const Register = () => {
             className="p-3 text-sky-600"
           >
             <FaFacebook size={30} />
+          </button>
+          <button
+            onClick={githubSign}
+            aria-label="Log in with GitHub"
+            className="p-3 text-black"
+          >
+            <FaGithubAlt size={30} />
           </button>
         </div>
         <p className="px-6 text-sm text-center font-text text-gray-400">

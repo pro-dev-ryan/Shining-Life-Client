@@ -17,20 +17,20 @@ const CourseDetail = () => {
       </h2>
       <div className="my-5">
         <img className="w-full h-[400px]" src={courseThumb} alt="/" />
-        <div>
-          <div className="flex px-5 justify-between">
-            <div className="font-semibold text-lg font-text">
+        <div className="px-4">
+          <div className="flex my-5 justify-between">
+            <div className="font-semibold text-lg mt-5 font-text">
               {" "}
               <span className="font-semibold text-lg font-text">
                 Mentor Name:
               </span>{" "}
               {mentor.mentorName}
             </div>
-            <div className="font-semibold text-lg font-text">
+            <div className="font-semibold text-lg mt-5 font-text">
               Rating: {rating}
             </div>
           </div>
-          <div className="mb-8">
+          <div className="mb-8 mt-5">
             <h4 className="text-xl font-textHead font-semibold">
               Course Details Description
             </h4>

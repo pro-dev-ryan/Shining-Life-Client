@@ -3,6 +3,7 @@ import { createContext } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
@@ -30,6 +31,11 @@ const ContextAuth = ({ children }) => {
   const signWithGoogle = () => {
     setLoader(true);
     return signInWithPopup(auth, provider);
+  };
+
+  const gitProvider = new GithubAuthProvider();
+  const signWithGithub = () => {
+    return signInWithPopup(auth, gitProvider);
   };
 
   useEffect(() => {
@@ -74,6 +80,7 @@ const ContextAuth = ({ children }) => {
     verifyMail,
     loader,
     setLoader,
+    signWithGithub,
   };
   return (
     <AuthContext.Provider value={authContent}>{children}</AuthContext.Provider>
