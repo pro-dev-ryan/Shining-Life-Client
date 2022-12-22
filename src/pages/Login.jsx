@@ -43,8 +43,8 @@ const Login = () => {
     setLoader(false);
   };
   return (
-    <div className="login lg:h-[80vh]">
-      <div className="flex justify-start pl-8 items-center pt-8">
+    <div className="login lg:h-[80vh] w-full">
+      <div className="flex justify-start md:pl-8 items-center pt-8">
         <div className="flex flex-col max-w-md p-3 border dark:border-stone-600 border-sky-100 sm:p-10 bg-sky-50 dark:bg-stone-800  text-stone-700 dark:text-stone-300 shadow shadow-stone-500 dark:bg-opacity-80">
           <div className="mb-8 text-center">
             <h1

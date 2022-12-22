@@ -12,11 +12,11 @@ const CourseDetail = () => {
   const navigate = useNavigate();
   return (
     <div className="my-5">
-      <h2 className="text-center text-4xl font-heading font-bold">
+      <h2 className="text-center text-2xl  md:text-4xl font-heading font-bold">
         {courseName}
       </h2>
       <div className="my-5">
-        <img className="w-full h-[400px]" src={courseThumb} alt="/" />
+        <img className="w-full md:h-[400px]" src={courseThumb} alt="/" />
         <div className="px-4">
           <div className="flex my-5 justify-between">
             <div className="font-semibold text-lg mt-5 font-text">
@@ -59,9 +59,7 @@ const CourseDetail = () => {
         </div>
         <Link
           onClick={
-            user?.emailVerified
-              ? navigate("/checkout/:id")
-              : toast.error("Verifymail for Premium Access")
+            user ? navigate("/checkout/:id") : toast.error("Please Login")
           }
           className="px-8 py-3 my-8 bg-sky-500 text-white hover:bg-sky-700"
         >

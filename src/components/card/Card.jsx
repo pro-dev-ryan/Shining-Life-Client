@@ -7,14 +7,14 @@ function Card({ course }) {
   const { courseName, rating, price, enrolled, courseThumb, mentor } = course;
   return (
     <>
-      <div className="grid grid-cols-1 mt-3 lg:mx-3 lg:w-[30%]">
+      <div className="grid grid-cols-1 mt-3 lg:mx-3 lg:my-3 lg:w-[30%]">
         <Link to={`${course.id}`}>
-          <div>
+          <div className="border">
             <div
               className="card-template glass backdrop-blur-sm bg-sky-100 dark:bg-stone-600 
-      hover:shadow lg:shadow-stone-600 transition-shadow duration-500 z-50"
+      hover:shadow lg:shadow-stone-600  transition-shadow duration-500 z-50"
             >
-              <img src={courseThumb} className="w-[90%] lg:w-full" alt="/" />
+              <img src={courseThumb} className="w-full" alt="/" />
               <div className="info">
                 <h4 className="blogQue mt-2 font-textHead">{courseName}</h4>
                 <div className="flex justify-between items-center px-1 ">

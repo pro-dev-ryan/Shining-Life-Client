@@ -45,7 +45,7 @@
   background-size: cover;
   background-position: right right;
   position: relative;
-  z-index: 100;
+  z-index: 10;
 }
 
 .login::before {

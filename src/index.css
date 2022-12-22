@@ -33,7 +33,7 @@
   }
 
   .card-template {
-    @apply lg:hover:shadow-xl focus:lg:ring-2 shadow-md shadow-zinc-500 lg:w-[100%]  lg:m-2 m-2 flex flex-col;
+    @apply lg:hover:shadow-xl focus:lg:ring-2 shadow-md shadow-zinc-500 lg:w-[100%] lg:h-80 flex flex-col;
   }
   .card img {
     @apply lg:w-full;

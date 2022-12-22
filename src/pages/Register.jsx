@@ -69,7 +69,7 @@ const Register = () => {
       .catch((error) => {});
   };
   return (
-    <div className="flex register justify-end items-center pr-8 lg:py-8 dark:bg-stone-700">
+    <div className="flex register justify-end items-center lg:pr-8 mx-2 lg:py-8 dark:bg-stone-700">
       <div className="flex flex-col max-w-md p-3 border dark:border-stone-600 border-sky-100 sm:p-10 bg-sky-50 dark:bg-stone-800  text-stone-700 dark:text-stone-300 shadow shadow-stone-500">
         <div className="mb-8 text-center">
           <h1

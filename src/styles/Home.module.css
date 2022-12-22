@@ -1,0 +1,19 @@
+.bg {
+  background-image: url("https://plus.unsplash.com/premium_photo-1661281205207-35cff1245a97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bGFwdG9wfGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+  width: 100%;
+  min-height: 600px;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+.bg::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(56, 54, 54);
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  z-index: -1;
+}
