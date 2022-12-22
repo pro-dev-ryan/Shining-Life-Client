@@ -3,6 +3,13 @@
   grid-template-columns: 1fr 3fr;
 }
 
+@media screen and (max-width: 500px) {
+  .layout {
+    display: grid;
+    grid-template-columns: none;
+  }
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -21,7 +28,7 @@
   background-image: url("https://images.pexels.com/photos/5313361/pexels-photo-5313361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   height: 100%;
   position: relative;
-  z-index: 100;
+  z-index: 10;
 }
 
 .register {

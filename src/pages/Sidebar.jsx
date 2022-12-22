@@ -4,7 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const Sidebar = () => {
   const data = useLoaderData();
   return (
-    <div className="dark:bg-stone-800">
+    <div className="dark:bg-stone-800 hidden lg:block">
       <h4 className="text-3xl tracking-wider w-fit border-b-2 border-stone-300 font-bold font-heading lg:ml-10">
         Classes We Offer
       </h4>

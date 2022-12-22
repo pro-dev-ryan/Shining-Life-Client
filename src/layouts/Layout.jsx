@@ -8,7 +8,10 @@ const Layout = () => {
     <div>
       <Header />
       <div className="layout p-1 my-5 ">
-        <Sidebar />
+        <div className="hidden lg:block">
+          {" "}
+          <Sidebar />
+        </div>
         <div>
           <Outlet />
         </div>
